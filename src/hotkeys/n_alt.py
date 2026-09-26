@@ -5,20 +5,13 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+
 def get_win32_move_file():
     """Fallback Win32 move to bypass transient Explorer lock handles."""
     move = ctypes.windll.kernel32.MoveFileExW
     move.argtypes = [ctypes.c_wchar_p, ctypes.c_wchar_p, ctypes.c_uint32]
     move.restype = ctypes.c_int
     return move
-
-
-def get_creation_timestamp(file_path: Path) -> datetime:
-    """Retrieve Windows creation time (ctime), defaulting to current time on failure."""
-    try:
-        return datetime.fromtimestamp(file_path.stat().st_ctime)
-    except Exception:
-        return datetime.now()
 
 
 def parse_name_and_ext(file_path: Path) -> tuple[str, str]:
@@ -38,7 +31,8 @@ def rename_item(target_path: Path) -> None:
     if not target.exists():
         return
 
-    dt = get_creation_timestamp(target)
+    # Use exact current time instead of file creation timestamp
+    dt = datetime.now()
     timestamp_prefix = dt.strftime("%Y%m%d%H%M%S")
 
     _, ext = parse_name_and_ext(target)
@@ -76,7 +70,7 @@ def parse_targets_from_args() -> list[Path]:
             selected = data.get("selected_items", [])
             if selected:
                 return [Path(p) for p in selected]
-            
+
             folder = data.get("folder_path")
             if folder:
                 return [Path(folder)]
