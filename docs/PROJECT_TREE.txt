@@ -1,10 +1,12 @@
-bitu-project/
+bitu-peer/
 ├── .vscode/
 │   ├── settings.json
 │   └── tasks.json
 ├── docs/
-│   ├── PROJECT_TREE.txt
-│   └── WHITEPAPER.md
+│   ├── 01-biou-making-debt-transitive.md
+│   ├── 02-bitu-trust-and-settlement.md
+│   ├── 03-bitu-pods-mesh.md
+│   └── PROJECT_TREE.txt
 ├── src/
 │   ├── [draft] menu/
 │   │   ├── foo_pretend_to_encrypt.py
@@ -60,6 +62,7 @@ bitu-project/
 │   │   ├── download/
 │   │   │   ├── offpeak.json
 │   │   │   ├── offpeak.py
+│   │   │   ├── vid.py
 │   │   │   └── worldpop.py
 │   │   ├── drive/
 │   │   │   └── partition.py
@@ -148,6 +151,7 @@ bitu-project/
 │   │   ├── r_alt.py
 │   │   ├── s_alt_ctrl_shift.py
 │   │   ├── s_ctrl.py
+│   │   ├── s_ctrl_alt.py
 │   │   ├── t_alt_ctrl.py
 │   │   ├── t_ctrl_alt_shift.py
 │   │   ├── v_alt.py
@@ -317,7 +321,7 @@ bitu-project/
 ├── stubs/
 │   └── win32clipboard.pyi
 ├── .gitignore
-├── bitu.bat
+├── autorun.bat
 ├── jsconfig.json
 ├── package-lock.json
 ├── package.json
