@@ -1,8 +1,9 @@
+:: run.bat
 @echo off
 title BITU
-cd /d "C:\I\-\bitu\bitu-project"
+cd /d "%~dp0"
 set "PYTHONPATH=src"
 set "PYTHONUNBUFFERED=1"
 set "BITU_EXPLORER_DEBUG=1"
-"C:\I\-\bitu\bitu-project\.venv\Scripts\python.exe" -m cli.start
+"%~dp0.venv\Scripts\python.exe" -m cli.start
 if errorlevel 1 pause
